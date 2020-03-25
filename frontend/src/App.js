@@ -2,8 +2,8 @@ import React from 'react';
 
 import './global.css';
 
-import LogOn from './pages/Logon';
+import Routes from './routes';
 
 export default function App() {
-  return <LogOn />;
+  return <Routes />;
 }
