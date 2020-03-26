@@ -31,5 +31,6 @@ module.exports = {
         'extensions': ['.js', '.jsx']
       }
     ],
+    'no-alert': 'off'
   },
 };

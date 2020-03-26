@@ -23,7 +23,7 @@ module.exports = {
 
 	async store(req, res) {
 		const { title, description, value } = req.body;
-		const ong_id = request.headers.authorization;
+		const ong_id = req.headers.authorization;
 
 		const [id] = await connection('incidents').insert({
 			title,
@@ -37,7 +37,7 @@ module.exports = {
 
 	async delete(req, res) {
 		const { id } = req.params;
-		const ong_id = request.headers.authorization;
+		const ong_id = req.headers.Authorization;
 
 		const incident = await connection('incidents').where('id', id)
 			.select('ong_id')
