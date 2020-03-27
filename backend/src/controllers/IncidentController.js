@@ -7,7 +7,7 @@ module.exports = {
 		const [count] = await connection('incidents').count();
 
 		const incidents = await connection('incidents')
-			.join('ongs', 'ongs.id', '=', 'incidents.org_id')
+			.join('ongs', 'ongs.id', '=', 'incidents.ong_id')
 			.limit(5)
 			.offset((page - 1 ) * 5)
 			.select(['incidents.*', 
@@ -16,14 +16,14 @@ module.exports = {
 				'ongs.city', 
 				'ongs.uf']);
 
-		req.header('X-Total-Count', count['count(*)']);
+		res.header('x-total-count', count['count(*)']);
 
 		return res.json(incidents);
 	},
 
 	async store(req, res) {
 		const { title, description, value } = req.body;
-		const ong_id = req.headers.authorization;
+		const ong_id = req.headers.Authorization;
 
 		const [id] = await connection('incidents').insert({
 			title,
