@@ -15,7 +15,6 @@ module.exports = {
 				'ongs.whatsapp', 
 				'ongs.city', 
 				'ongs.uf']);
-
 		res.header('x-total-count', count['count(*)']);
 
 		return res.json(incidents);
